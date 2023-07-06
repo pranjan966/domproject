@@ -22,9 +22,11 @@ function submit(e) {
     // console.log(myObj)
     // localStorage.setItem("user_email", email)
     const myObj_serialised = JSON.stringify(myObj)
-    localStorage.setItem("email", myObj_serialised)
+
+
+    localStorage.setItem(`${email}`, myObj_serialised)
     const myObj_deserilized = JSON.parse(localStorage.getItem(myObj))
-    // console.log(myObj_deserilized)
+    console.log(myObj_deserilized)
 
 
     // newItem = document.getElementById("items").value;
@@ -45,10 +47,14 @@ function submit(e) {
 
 }
 function deleteItem(e) {
+    const email = document.getElementById("inputEmail").value
+    const city = document.getElementById("inputCity").value
     if (e.target.classList.contains('delete')) {
         if (confirm('Are you sure')) {
+
             const li = e.target.parentElement;
             listItems.removeChild(li);
+            localStorage.removeItem(`${email}`);
         }
     }
 
